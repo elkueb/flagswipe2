@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'flagswipe';
+
+  navigation = [
+    { link: '/browse/countries', text: 'Countries'},
+    { link: '/browse/flags', text: 'Flags'},
+  ]
 }
