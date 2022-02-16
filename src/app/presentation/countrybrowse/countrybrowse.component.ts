@@ -8,11 +8,7 @@ import {Country} from "../../models/country.model";
   styleUrls: ['./countrybrowse.component.less']
 })
 export class CountrybrowseComponent implements OnInit {
-  countries: Country[] = [
-    {name: 'Austria'},
-    {name: 'Germany'},
-    {name: 'France'}
-  ]
+  countries: Country[] = []
 
   constructor(private countryService: CountryService) {
   }
