@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {CountryService} from "../../countries/country.service";
+import {Country} from "../../models/country.model";
 
 @Component({
   selector: 'app-countrybrowse',
@@ -6,16 +8,21 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./countrybrowse.component.less']
 })
 export class CountrybrowseComponent implements OnInit {
-  countries = [
+  countries: Country[] = [
     {name: 'Austria'},
     {name: 'Germany'},
     {name: 'France'}
   ]
 
-  constructor() {
+  constructor(private countryService: CountryService) {
   }
 
   ngOnInit(): void {
+    this.updateCountries()
+  }
+
+  updateCountries() {
+    this.countryService.getCountries().subscribe(countries => this.countries = countries);
   }
 
 }
