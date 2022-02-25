@@ -21,26 +21,21 @@ export class WikidataService {
   }
 
   getCountries(): Observable<Country[]> {
-    const result = this.httpClient.get(WikidataService.SPARQL_ENDPOINT, {params: {'query': WikidataService.COUNTRY_QUERY}});
+    const response = this.httpClient.get(WikidataService.SPARQL_ENDPOINT, {params: {'query': WikidataService.COUNTRY_QUERY}});
 
-    return result.pipe(
-      map((r) => {
-        console.log(r);
+    return response.pipe(
+      map((content) => {
+        const wikidataResult = content as WikidataResult;
 
-        const rconv = r as WikidataResult;
+        const maybeCountries: Country[] | undefined = wikidataResult?.results?.bindings?.map(c => {
+          const countryBinding = <CountryBinding>c;
+          console.log(countryBinding.country);
+          //console.log(countryBinding.countryLabel);
 
-        const maybeCountries: Country[] | undefined = rconv?.results?.bindings?.map(c => {
-          const cbind = <CountryBinding>c;
-          console.log(cbind.country);
-          //console.log(cbind.countryLabel);
-
-          return {"name": cbind.countryLabel?.value} as Country
+          return {"name": countryBinding.countryLabel?.value} as Country
         })
 
-        if (!maybeCountries) {
-          return []
-        }
-        return maybeCountries
+        return maybeCountries || [];
       }));
   }
 }
