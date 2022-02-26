@@ -21,6 +21,20 @@ export class LocalStorageService {
   getStorage<Type>(type: Type): Storage<Type> {
     return new Storage<typeof type>();
   }
+
+  deleteCountries(): void {
+    let keysToRemove = []
+
+    for (let i = 0; i < localStorage.length; i++) {
+      let currentKey = localStorage.key(i)
+
+      if (currentKey != null && currentKey.startsWith("countr")) {
+        keysToRemove.push(currentKey)
+      }
+    }
+
+    keysToRemove.forEach(key => localStorage.removeItem(key))
+  }
 }
 
 export class Storage<Type> {

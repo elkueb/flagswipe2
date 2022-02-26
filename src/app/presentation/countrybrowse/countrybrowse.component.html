@@ -1,3 +1,11 @@
-<ul>
-  <li *ngFor="let country of countries">{{ country.name }}</li>
-</ul>
+<div *ngIf="country == undefined">
+  <ul>
+    <li *ngFor="let country of countries" (click)="onSelect(country)">{{ country.name }}</li>
+  </ul>
+</div>
+<div *ngIf="country != undefined">
+  <h2>{{ country.name}}</h2>
+  <ul>
+    <li>{{ country.wikidataLink }}</li>
+  </ul>
+</div>

@@ -9,11 +9,13 @@ import {Country} from "../../models/country.model";
 })
 export class CountrybrowseComponent implements OnInit {
   countries: Country[] = []
+  country: Country | undefined;
 
   constructor(private countryService: CountryService) {
   }
 
   ngOnInit(): void {
+    this.country = undefined
     this.updateCountries()
   }
 
@@ -21,4 +23,7 @@ export class CountrybrowseComponent implements OnInit {
     this.countryService.getCountries().subscribe(countries => this.countries = countries);
   }
 
+  onSelect(country: Country): void {
+    this.country = country
+  }
 }
