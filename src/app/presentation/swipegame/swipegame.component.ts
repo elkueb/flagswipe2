@@ -1,11 +1,13 @@
 import {Component, OnInit} from "@angular/core";
 import {GameService} from "../../service/game/game.service";
-import {Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-swipe',
   templateUrl: './swipegame.component.html',
-  styleUrls: ['./swipegame.component.less']
+  styleUrls: ['./swipegame.component.less'],
+  host: {
+    '(document:keydown)': 'handleKeyboardEvent($event)'
+  }
 })
 export class SwipegameComponent implements OnInit {
 
@@ -16,7 +18,25 @@ export class SwipegameComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.newCard()
+  }
+
+  left(): void {
+  }
+
+  right(): void {
+    this.newCard()
+  }
+
+  private newCard(): void {
     this.gameService.question().subscribe(newCard => this.currentCard = newCard)
   }
 
+  handleKeyboardEvent(event: KeyboardEvent): void {
+    if (event.key == 'ArrowLeft') {
+      this.left()
+    }
+    if (event.key == 'ArrowRight')
+      this.right()
+  }
 }

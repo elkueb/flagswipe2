@@ -16,6 +16,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {WelcomeComponent} from './presentation/welcome/welcome.component';
 import {SwipegameComponent} from "./presentation/swipegame/swipegame.component";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {SwipegameComponent} from "./presentation/swipegame/swipegame.component";
     MatIconModule,
     MatListModule,
     HttpClientModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

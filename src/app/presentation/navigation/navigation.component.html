@@ -1,3 +1,14 @@
 <mat-toolbar>
-
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <!-- <mat-icon (click)="sidenav.toggle()">menu</mat-icon> -->
+    </button>
+    <span><a id="toolbar-title" [routerLink]="'/'">{{title}}</a></span>
+    <span class="menu-spacer"></span>
+    <div>
+      <span *ngFor="let nav of navigation">
+        <a mat-button [routerLink]="nav.link">{{nav.text}}</a>
+      </span>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>

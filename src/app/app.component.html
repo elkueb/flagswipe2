@@ -1,19 +1,7 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <button mat-icon-button>
-      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-    </button>
-    <span><a id="toolbar-title" [routerLink]="'/'">{{title}}</a></span>
-    <span class="menu-spacer"></span>
-    <div>
-      <span *ngFor="let nav of navigation">
-        <a mat-button [routerLink]="nav.link">{{nav.text}}</a>
-      </span>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+<app-navigation></app-navigation>
 
 <mat-sidenav-container>
+  <!--
   <mat-sidenav #sidenav>
     <mat-nav-list>
       <mat-list-item *ngFor="let nav of navigation">
@@ -22,6 +10,7 @@
       <a mat-list-item (click)="sidenav.toggle()">Close</a>
     </mat-nav-list>
   </mat-sidenav>
+  -->
   <mat-sidenav-content>
     <div style="height: 88vh;">
       <router-outlet></router-outlet>

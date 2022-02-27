@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.less']
 })
 export class NavigationComponent implements OnInit {
+  title = 'flagswipe';
+
+  navigation = [
+    { link: '/browse/countries', text: 'Countries'},
+    { link: '/browse/flags', text: 'Flags'},
+    { link: '/play', text: 'Play'}
+  ]
 
   constructor() { }
 

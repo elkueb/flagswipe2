@@ -2,8 +2,12 @@
   Left or right?
 </p>
 <div>
-  <ul>
-    <li><strong>Name: </strong> {{ currentCard.name }}</li>
-    <li><strong>Capital: </strong> {{ currentCard.capital }}</li>
-  </ul>
+  <mat-card>
+    <mat-card-title>{{ currentCard.name}}</mat-card-title>
+    <mat-card-content>{{ currentCard.capital}}</mat-card-content>
+    <mat-card-actions>
+      <button mat-fab (click)="left()">Left</button>
+      <button mat-fab (click)="right()">Right</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
