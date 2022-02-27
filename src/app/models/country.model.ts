@@ -1,6 +1,6 @@
 export interface Country {
-  name?: string;
   id?: string;
+  name?: string;
   wikidataId?: string;
   wikidataLink?: string;
   capital?: string;

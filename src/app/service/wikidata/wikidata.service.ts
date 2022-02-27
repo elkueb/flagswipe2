@@ -12,10 +12,14 @@ import {v4 as uuidv4} from 'uuid';
 export class WikidataService {
   private static readonly SPARQL_ENDPOINT: string = "https://query.wikidata.org/sparql";
   private static readonly COUNTRY_QUERY: string = `
-  SELECT ?country ?countryLabel WHERE {
-    ?country wdt:P31 wd:Q3624078.
+  SELECT ?country ?countryLabel ?population ?capital ?capitalLabel ?area ?flag WHERE {
+    ?country wdt:P31 wd:Q3624078;
+             wdt:P1082 ?population;
+             wdt:P36 ?capital;
+             wdt:P2046 ?area;
+             wdt:P41 ?flag.
     SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en,de,fr" }
-  }
+ }
   `;
 
   constructor(private httpClient: HttpClient) {
@@ -34,9 +38,14 @@ export class WikidataService {
           //console.log(countryBinding.countryLabel);
 
           return {
+            "id": uuidv4(),
             "name": countryBinding.countryLabel?.value,
             "wikidataLink": countryBinding.country?.value,
-            "id": uuidv4()
+            "wikidataId": "",
+            "capital": countryBinding.capitalLabel?.value,
+            "inhabitants": countryBinding.population?.value,
+            "area": countryBinding.area?.value,
+            "flag": countryBinding.flag?.value,
           } as Country
         })
 

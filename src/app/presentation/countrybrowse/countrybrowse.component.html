@@ -7,5 +7,12 @@
   <h2>{{ country.name}}</h2>
   <ul>
     <li>{{ country.wikidataLink }}</li>
+    <li>Name: {{ country.name}}</li>
+    <li>Capital: {{ country.capital}}</li>
+    <li>Population: {{ country.inhabitants}}</li>
+    <li>Area: {{ country.area}}</li>
+    <li>Flag: {{ country.flag}}</li>
   </ul>
+  <hr />
+  <img src="{{ country.flag}}" alt="Flag of {{country.name}}" />
 </div>

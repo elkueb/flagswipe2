@@ -11,5 +11,6 @@ export class AppComponent {
   navigation = [
     { link: '/browse/countries', text: 'Countries'},
     { link: '/browse/flags', text: 'Flags'},
+    { link: '/play', text: 'Play'}
   ]
 }
