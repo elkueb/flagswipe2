@@ -1,18 +1,24 @@
-<div *ngIf="country == undefined">
-  <ul>
-    <li *ngFor="let country of countries" (click)="onSelect(country)">{{ country.name }}</li>
-  </ul>
+<div>
+  <p-table [value]="countries">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">Name</th>
+        <th>Flag</th>
+        <th pSortableColumn="capital">Capital</th>
+        <th pSortableColumn="inhabitants">Population</th>
+        <th pSortableColumn="area">Area</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-country>
+      <tr>
+        <td (click)="countryDetail(country)">{{ country.name }}</td>
+        <td><img src="{{ country.flag }}" alt="Flag of {{ country.name }}" height="20px"></td>
+        <td>{{ country.capital }}</td>
+        <td>{{ country.inhabitants }}</td>
+        <td>{{ country.area }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
-<div *ngIf="country != undefined">
-  <h2>{{ country.name}}</h2>
-  <ul>
-    <li>{{ country.wikidataLink }}</li>
-    <li>Name: {{ country.name}}</li>
-    <li>Capital: {{ country.capital}}</li>
-    <li>Population: {{ country.inhabitants}}</li>
-    <li>Area: {{ country.area}}</li>
-    <li>Flag: {{ country.flag}}</li>
-  </ul>
-  <hr />
-  <img src="{{ country.flag}}" alt="Flag of {{country.name}}" />
-</div>
+<app-country-detail [country]="country" [visible]="countryDialog" (closed)="countryDialog">
+</app-country-detail>

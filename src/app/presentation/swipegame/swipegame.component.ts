@@ -22,6 +22,7 @@ export class SwipegameComponent implements OnInit {
   }
 
   left(): void {
+    this.newCard()
   }
 
   right(): void {

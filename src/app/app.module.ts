@@ -17,6 +17,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {WelcomeComponent} from './presentation/welcome/welcome.component';
 import {SwipegameComponent} from "./presentation/swipegame/swipegame.component";
 import {MatCardModule} from "@angular/material/card";
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {TableModule} from "primeng/table";
+import { CountryDetailComponent } from './presentation/country-detail/country-detail.component';
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
   declarations: [
@@ -26,6 +30,7 @@ import {MatCardModule} from "@angular/material/card";
     CountrybrowseComponent,
     WelcomeComponent,
     SwipegameComponent,
+    CountryDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,9 @@ import {MatCardModule} from "@angular/material/card";
     MatListModule,
     HttpClientModule,
     MatCardModule,
+    DragDropModule,
+    TableModule,
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

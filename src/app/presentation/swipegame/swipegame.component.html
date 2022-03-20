@@ -2,12 +2,14 @@
   Left or right?
 </p>
 <div>
-  <mat-card>
-    <mat-card-title>{{ currentCard.name}}</mat-card-title>
-    <mat-card-content>{{ currentCard.capital}}</mat-card-content>
-    <mat-card-actions>
-      <button mat-fab (click)="left()">Left</button>
-      <button mat-fab (click)="right()">Right</button>
-    </mat-card-actions>
-  </mat-card>
+  <div id="card-box">
+    <mat-card class="game-card" cdkDrag cdkDragBoundary="#card-box">
+      <mat-card-title>{{ currentCard.name}}</mat-card-title>
+      <mat-card-content>{{ currentCard.capital}}</mat-card-content>
+      <mat-card-actions>
+        <button mat-fab (click)="left()">Left</button>
+        <button mat-fab (click)="right()">Right</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>
